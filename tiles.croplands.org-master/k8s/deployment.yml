@@ -1,0 +1,57 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: croplands-tiles
+  namespace: croplands
+spec:
+  replicas: 2
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: croplands-tiles
+  # Pod template
+  template:
+    metadata:
+      labels:
+        app: croplands-tiles
+      annotations:
+        vault.hashicorp.com/agent-inject: "true"
+        vault.hashicorp.com/agent-init-first: "true"
+        vault.hashicorp.com/role: croplands
+        vault.hashicorp.com/agent-inject-secret-env: "kv/devs/croplands"
+        vault.hashicorp.com/agent-inject-template-env: |
+          {{- with secret "kv/devs/croplands" -}}
+          export DG_EV_CONNECT_ID='{{ .Data.data.dgEvConnectID }}'
+          export DG_EV_PASSWORD='{{ .Data.data.dgEvPassword }}'
+          export DG_EV_USERNAME='{{ .Data.data.dgEvUsername }}'
+          export GOOGLE_SERVICE_ACCOUNT_ENC='{{ .Data.data.googleServiceAccntBase64 }}'
+          export GS_ACCESS_KEY='{{ .Data.data.GS_ACCESS_KEY }}'
+          export GS_SECRET='{{ .Data.data.GS_SECRET }}'
+          export POSTMARK_API_KEY='{{ .Data.data.postmarkApiKey }}'
+          export SECRET='{{ .Data.data.secret }}'
+          export SQLALCHEMY_DATABASE_URI='{{ .Data.data.sqlAlchemyDatabaseUri }}'
+          {{- end }}
+    spec:
+      serviceAccountName: croplands
+      containers:
+        - name: croplands-tiles
+          image: eks-registry.prod-asc.chs.usgs.gov/library/croplands-tiles:latest
+          ports: 
+            - containerPort: 8000
+          env:
+            - name: REDIS_URL
+              value: "redis://croplands-db.croplands.svc:6379"
+            - name: REQUESTS_CA_BUNDLE
+              value: "/etc/ssl/certs/ca-certificates.crt"
+            - name: SERVER_ADDRESS
+              value: "https://api.croplands.org"
+            - name: SSL_CERT_FILE
+              value: "/etc/ssl/certs/ca-certificates.crt"
+          command:
+            - bash
+            - -c
+            - |
+              source /vault/secrets/env && \
+              gunicorn tiles:app -b :8000 --workers=2 -k gevent -t 45 --log-level=DEBUG
+
