@@ -1,0 +1,32 @@
+include:
+  - project: asc/ci-library
+    file: build-docker-eks-prod.yml
+  - project: asc/ci-library
+    file: deploy-eks-prod.yml
+
+stages:
+  - build
+  - deploy
+
+variables:
+  EKS_IMAGE_NAME: croplands-web
+  EKS_NAMESPACE: croplands
+
+"Build/push eks image":
+  stage: build
+  rules:
+    - changes:
+        - croplands-web/**/*
+        - Dockerfile
+        - requirements.txt
+  extends: 
+    - .build-docker-eks
+
+"Deploy to eks":
+  stage: deploy
+  extends: 
+    - .eks-deploy
+  script:
+    - kubectl apply -f $EKS_CONFIG_DIR/
+    - kubectl rollout restart deployment croplands-web
+

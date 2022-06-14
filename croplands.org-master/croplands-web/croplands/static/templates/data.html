@@ -1,0 +1,116 @@
+<style>
+    .gradient {
+        background-image: linear-gradient(
+                to right,
+                #ff0000,
+                #00ff00
+        );
+    }
+
+    .left {
+        float: left;
+    }
+
+    .right {
+        float: right;
+    }
+
+    table td, table th {
+        text-align: center;
+    }
+
+</style>
+<div class="container container-static-nav" style="margin-top: 60px;">
+    <div class="row">
+        <div class="col-sm-7">
+            <h3 style="margin-top: 0px;">Data Purpose</h3>
+
+            <p>Reference data are needed to produce and validate our products. Within
+                our project, we carefully track which data has been used for training and which data
+                has been used for validation.</p>
+
+            <p>A key issue is collecting a sufficient amount of reference data across many different
+                landscapes and crop types. The map below shows the current state of reference data
+                on a country basis.</p>
+
+            <p>View our reference data definitions <a
+                    href="https://d2bol3etyblasz.cloudfront.net/docs/Croplands-definitions-1d.pdf"
+                    target="blank">here</a>.</p>
+
+            <div class="well well-sm">
+
+                <h4>Help Us Reach our Goal</h4>
+
+                <p>Collect reference data on cropland with our mobile application. It
+                    is simple to use and creates the most benefit for the project. Available for
+                    IOS and Android devices.</p>
+
+                <p><a class="btn btn-danger" href="/mobile" target="_self" role="button">Get the
+                    Mobile App &raquo;</a>
+                </p>
+            </div>
+            <h3>Sources</h3>
+
+            <p>The project is attempting to collect reference data from a variety of sources. Useful
+                data on a global scale is very limited and some creative ideas are required. Some of
+                our current
+                sources are below.</p>
+            <ul>
+                <li>Custom Mobile Application</li>
+                <li>Past Field Visits</li>
+                <li>Derived from Very High Resolution Imagery</li>
+                <li>Secondary Sources from Projects or Research</li>
+                <li>Statistical Data for Area Comparisons</li>
+            </ul>
+            <h3>Ground Data Form</h3>
+
+            <p>This standard ground data form is designed and developed by Dr. Russell G. Congalton.
+                This ground data form allows you to collect standardized ground data (or field data)
+                samples from 90 m by 90 m (3 by 3 Landsat pixels) area (or 0.27 m2 area). Data
+                collected includes, GPS location, land cover types, and digital photographs.
+            </p>
+
+            <p>Ideally, sample locations are identified based on stratified random sampling
+                (stratified by road network, and randomized by locating points every few minutes of
+                drive or certain distance travelled).</p>
+        </div>
+        <div class="col-sm-5">
+            <h3 style="margin-top: 0px;">Data Coverage</h3>
+            <leaflet id="map" style="width: 100%;height:300px;"
+                     lf-center="center"
+                     lf-layers="layers">
+            </leaflet>
+
+            <div class="legend_color gradient clearfix"
+                 style="width: 100%;margin: 5px 0; color: white; padding: 5px;">
+                <div class="left">Poor</div>
+                <div class="right">Good</div>
+            </div>
+            <table class="table-striped table-bordered" style="width: 100%">
+                <thead>
+
+                <tr>
+                    <th ng-click="sortColumn('properties.adm0_name')">Country</th>
+                    <th ng-click="sortColumn('properties.cultivated_area_km2')">Cultivated
+                        Area km<sup>2</sup></th>
+                    <th ng-click="sortColumn('properties.crop_type')">Count</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="country in countries | orderBy : sort.column : sort.reverse"
+                    ng-if="country.properties.visible">
+                    <td ng-click="moveToCountry(country.properties.bounds);">{{
+                        country.properties.adm0_name}}
+                    </td>
+                    <td>{{ country.properties.cultivated_area_km2 }}</td>
+                    <td>{{ country.properties.crop_type}}</td>
+                </tr>
+                </tbody>
+            </table>
+            <small>Cultivated area from FAO via <a
+                    href="http://www.fao.org/nr/water/aquastat/data/query/index.html"
+                    target="_blank">AQUAStat Query</a>.
+            </small>
+        </div>
+    </div>
+</div>

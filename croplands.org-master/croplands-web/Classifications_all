@@ -1,0 +1,7 @@
+Add this to classify.html when ready to have all of Bo's data ready for download to everyone.
+                <a class="btn btn-danger btn-block"
+                   href="http://public.croplands.org/json/classifications_all_.json"
+                   target="_blank" ng-if="showValidation()">Download JSON(All)</a>
+                <a class="btn btn-danger btn-block"
+                   href="http://public.croplands.org/csv/classifications_all_.csv"
+                   target="_blank" ng-if="showValidation()">Download CSV(All)</a>

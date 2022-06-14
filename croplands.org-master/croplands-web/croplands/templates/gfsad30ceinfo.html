@@ -1,0 +1,155 @@
+<style>
+    th {
+    background-color: #64717e;
+    color: white;
+}
+</style>
+
+<style>
+    div.bold {
+        font-size: 140%;
+    }
+
+    div.region {
+        font-size: 120%;
+    }
+</style>
+{% extends '_primary_layout.html' %}
+{% block title %}GFSAD30CE Info{% endblock %}
+
+{% block content %}
+
+    <h2 style="font-family: Tahoma; padding-top: 50px;">
+        <center><b>GFSAD30CE Information</b></center>
+    </h2>
+
+    <div class="bold"><p class="bold"><b><center>Global Food Security-support Analysis Data (GFSAD) Cropland Extent 30 m V001 for nominal Year 2015 (GFSAD30CE V001)</center></b></p><br></div>
+
+    <div class="container" style="font-size: 130%; font-family: Times New Roman, Times, serif; border:1px solid black;">
+
+        <p>
+         Global Food Security-support Analysis Data (GFSAD) Cropland Extent 30 m V001 <b>(GFSAD30CE V001)</b> is the highest spatial resolution global croplands map to date. It was created to help support global food and water security studies for nominal year 2015. It was created by the global food security-support analysis data @ 30-m (GFSAD30) Project Team <a href=(https://geography.wr.usgs.gov/science/croplands/index.html)>(https://geography.wr.usgs.gov/science/croplands/index.html)</a> who’s goal is to map global croplands and their attributes routinely, rapidly, consistently and accurately year after year.
+        </p>
+
+        <p style="text-align: justify">
+        The project is a collaborative effort among the USGS, National Aeronautics and Space Administration, Bay Area Environmental Research Institute, University of New Hampshire, California State University Monterey Bay, University of Wisconsin, Northern Arizona University, International Crops Research Institute for the Semi-Arid Tropics, U.S. Department of Agriculture, U.S. Environmental Protection Agency, Indonesian Agency for Agricultural Research and Development, and Google.
+        </p>
+
+        <p style="text-align: justify">
+        The project is funded by NASA’s Making Earth System Data Records for Use in Research Environments Program, with supplemental funding from the USGS. The project's Principal Investigator is Dr. Prasad S. Thenkabail <a href=pthenkabail@usgs.gov>(pthenkabail@usgs.gov)</a> with co-investigators and team members from multiple institutes <a href=(https://geography.wr.usgs.gov/science/croplands/team.html)>(https://geography.wr.usgs.gov/science/croplands/team.html).</a>
+        </p>
+
+        <p style="text-align: left">
+        The global product was derived from 7 continental or very large area cropland extent products. Users should cite each product based on the areas used. If you are using the entire World’s data, then please quote all the listed references below. Detailed algorithm theoretical basis documents (ATBD's), user guides, and official data download site is done through the Land Processes Distributed Active Archive Center (LP DAAC). <u>Global Food Security-support Analysis Data (GFSAD) Cropland Extent 30 m V001 (GFSAD30CE V001) through GEE should visit the following LP DAAC site to find ATBD's, and user guides which are available for each continents and\or large study areas:</u> <a href=https://lpdaac.usgs.gov/news/release-of-gfsad-30-meter-cropland-extent-products>https://lpdaac.usgs.gov/news/release-of-gfsad-30-meter-cropland-extent-products</a>
+        </p>
+
+
+        <p style="text-align: justify">
+        This dataset contains one band, cropland extent, with 0 = Ocean or inland waterbody, 1 = Non-Cropland, 2 = Cropland. The product was created from two machine learning algorithms (MLA’s). These were pixel-based supervised: (a) random forest classifications, and (b) support vector machines. The product was further refined using object-based: (c) recursive hierarchical segmentation (RHSeg). The algorithm used  multitemporal, every 16-day, Landsat imagery for 3 years (2013-2015), over 100,000 reference data samples,  and other auxiliary data sources. Reference training and validation locations were derived from ground samples and very-high-resolution sub-meter to 5-meter) image interpretation. Validation was conducted using nearly 20,000 data samples in 72 refined agro-ecological zones of the world. Details on the exact imagery, reference data and product accuracy assessments can be found in the associated ATBDs and Users Guides at NASA’s LP DAAC:
+        <a href=https://lpdaac.usgs.gov/news/release-of-gfsad-30-meter-cropland-extent-products>https://lpdaac.usgs.gov/news/release-of-gfsad-30-meter-cropland-extent-products</a>
+        </p>
+
+        <p style="text-align: justify">
+        Cropland extent was defined as: <i>“lands cultivated with plants harvested for food, feed, and fiber, include both seasonal crops (e.g., wheat, rice, corn, soybeans, cotton) and continuous plantations (e.g., coffee, tea, rubber, cocoa, oil palms). Cropland fallows are lands uncultivated during a season or a year but are farmlands and are equipped for cultivation, including plantations (e.g., orchards, vineyards, coffee, tea, rubber”</i> (Teluguntla et al., 2015). Cropland extent also includes areas equipped for cropping but may not be cropped in a particular season or year. These are cropland fallow. So, cropland extent includes all planted crops plus cropland fallows. Non-croplands include all other land cover classes other than croplands and cropland fallows
+        </p>
+
+        <p>
+        See the official news release by USGS @:
+        <a href=https://www.usgs.gov/news/new-map-worldwide-croplands-supports-food-and-water-security>https://www.usgs.gov/news/new-map-worldwide-croplands-supports-food-and-water-security</a>
+        </p>
+
+        <p>
+        <b>For more information, please contact:
+        Dr. Prasad S. Thenkabail</b> (<a href="mailto:pthenkabail@usgs.gov" target="_top">pthenkabail@usgs.gov</a>  or <a href="mailto:pthenkabail@gmail.gov" target="_top">pthenkabail@gmail.gov</a>  or call him at: 928-556-7221), Research Geographer @ U. S. Geological Survey (USGS)
+        </p>
+
+        <div class="bold">
+                <p>
+                    <b><center>Citation list (if you use the entire World’s product, please quote all of the below):</center></b>
+                </p>
+            </div>
+
+
+        <p>
+        <div class="region"><b><span style="color: #000080">Africa</span>: GFSAD30AFCE</b> <br></div>
+        Xiong, J., Thenkabail, P. S., Tilton, J.C., Gumma, M. K., Teluguntla, P., Congalton, R. G., Yadav, K., Dungan, J., Oliphant, A. J., Poehnelt, J., Smith, C., Massey, R. (2017). NASA Making Earth System Data Records for Use in Research Environments (MEaSUREs) Global Food Security-support Analysis Data (GFSAD) @ 30-m Africa: Cropland Extent Product (GFSAD30AFCE). NASA EOSDIS Land Processes DAAC. Retrieved from <a href=https://doi.org/10.5067/MEaSUREs/GFSAD/GFSAD30AFCE.001>https://doi.org/10.5067/MEaSUREs/GFSAD/GFSAD30AFCE.001</a>
+
+        <p>
+        Xiong, J.; Thenkabail, P.S.; Tilton, J.C.; Gumma, M.K.; Teluguntla, P.; Oliphant, A.; Congalton, R.G.; Yadav, K.; Gorelick, N. Nominal 30-m Cropland Extent Map of Continental Africa by Integrating Pixel-Based and Object-Based Algorithms Using Sentinel-2 and Landsat-8 Data on Google Earth Engine. Remote Sens. 2017, 9, 1065. doi:10.3390/rs9101065 ; <a href=http://www.mdpi.com/2072-4292/9/10/1065> http://www.mdpi.com/2072-4292/9/10/1065 </a>
+        Also, the cover story: <a href=http://www.mdpi.com/2072-4292/9/10>http://www.mdpi.com/2072-4292/9/10</a>
+        </p>
+
+        <p>
+        <div class="region"><b><span style="color: #000080">Australia, New Zealand, China, and Mongolia</span>: GFSAD30AUNZCNMOCE</b><br></div>
+        Teluguntla, P., Thenkabail, P.S., Xiong,  J., Gumma, M.K., Congalton, R. G., Oliphant, A. J., Sankey, T., Poehnelt, J., Yadav, K., Massey, R., Phalke, A., Smith, C. (2017).  NASA Making Earth System Data Records for Use in Research Environments (MEaSUREs) Global Food Security-support Analysis Data (GFSAD) @ 30-m for Australia, New Zealand, China, and Mongolia: Cropland Extent Product  (GFSAD30AUNZCNMOCE). NASA EOSDIS Land Processes DAAC. Retrieved from
+        <a href=https://doi.org/10.5067/MEaSUREs/GFSAD/GFSAD30AUNZCNMOCE.001>https://doi.org/10.5067/MEaSUREs/GFSAD/GFSAD30AUNZCNMOCE.001</a>
+        </p>
+
+        <p>
+        <div class="region"><b><span style="color: #000080">Southeast & Northeast Asia</span>: GFSAD30SEACE</b><br></div>
+        Oliphant, A. J., Thenkabail, P. S., Teluguntla, P., Xiong, J. Congalton, R. G., Yadav, K., Massey, R., Gumma, M.K., Smith, C. 2017. NASA Making Earth System Data Records for Use in Research Environments (MEaSUREs) Global Food Security-support Analysis Data (GFSAD) @ 30-m for Southeast & Northeast Asia: Cropland Extent Product (GFSAD30SEACE). NASA EOSDIS Land Processes DAAC. Retrieved from <a href=https://doi.org/10.5067/MEaSUREs/GFSAD/GFSAD30SEACE.001>https://doi.org/10.5067/MEaSUREs/GFSAD/GFSAD30SEACE.001</a>
+        </p>
+
+        <p>
+        <div class="region"><b><span style="color: #000080">South Asia, Afghanistan and Iran</span>: GFSAD30SAAFGIRCE</b><br></div>
+        Gumma, M.K., Thenkabail, P.S., Teluguntla, P., Oliphant, A.J., Xiong, J., Congalton, R. G., Yadav, K., Phalke, A., Smith, C.  (2017).  NASA Making Earth System Data Records for Use in Research Environments (MEaSUREs) Global Food Security-support Analysis Data (GFSAD) @ 30-m for South Asia, Afghanistan and Iran: Cropland Extent Product (GFSAD30SAAFGIRCE). NASA EOSDIS Land Processes DAAC. Retrieved from
+        <a href=https://doi.org/10.5067/MEaSUREs/GFSAD/GFSAD30SAAFGIRCE.001>https://doi.org/10.5067/MEaSUREs/GFSAD/GFSAD30SAAFGIRCE.001</a>
+        </p>
+
+        <p>
+        <div class="region"><b><span style="color: #000080">Europe, Middle-east, Russia and Central Asia</span>: GFSAD30EUCEARUMECE</b><br></div>
+        Phalke, A., Ozdogan, M., Thenkabail, P. S., Congalton, R. G., Yadav, K., Massey, R., Teluguntla, P., Poehnelt, J., Smith, C.  (2017).  NASA Making Earth System Data Records for Use in Research Environments (MEaSUREs) Global Food Security-support Analysis Data (GFSAD) @ 30-m for Europe, Middle-east, Russia and Central Asia: Cropland Extent Product  (GFSAD30EUCEARUMECE). NASA EOSDIS Land Processes DAAC. Retrieved from
+        <a href=https://doi.org/10.5067/MEaSUREs/GFSAD/GFSAD30EUCEARUMECE.001>https://doi.org/10.5067/MEaSUREs/GFSAD/GFSAD30EUCEARUMECE.001</a>
+        </p>
+
+        <p>
+        <div class="region"><b><span style="color: #000080">North America</span>: GFSAD30NACE</b><br></div>
+        Massey, R., Sankey, T.T., Yadav, K., Congalton, R.G., Tilton, J.C., Thenkabail, P.S. (2017). NASA Making Earth System Data Records for Use in Research Environments (MEaSUREs) Global Food Security-support Analysis Data (GFSAD) @ 30m for North America: Cropland Extent Product (GFSAD30NACE). NASA EOSDIS Land Processes DAAC.
+        <a href=https://doi.org/10.5067/MEaSUREs/GFSAD/GFSAD30NACE.001>https://doi.org/10.5067/MEaSUREs/GFSAD/GFSAD30NACE.001</a>
+        </p>
+
+        <p>
+        <div class="region"><b><span style="color: #000080"> South America</span>: GFSAD30SACE</b><br></div>
+        Zhong, Y., Giri, C., Thenkabail, P.S., Teluguntla, P., Congalton, R. G., Yadav, K., Oliphant, A. J., Xiong, J., Poehnelt, J., and Smith, C. 2017. NASA Making Earth System Data Records for Use in Research Environments (MEaSUREs) Global Food Security-support Analysis Data (GFSAD) @ 30-m for South America: Cropland Extent Product (GFSAD30SACE). NASA EOSDIS Land Processes DAAC. Retrieved from
+        <a href=https://doi.org/10.5067/MEaSUREs/GFSAD/GFSAD30SACE.001>https://doi.org/10.5067/MEaSUREs/GFSAD/GFSAD30SACE.001</a>
+        </p>
+
+        <p>
+        <div class="region"><b><span style="color: #000080">Global Validation</span>: GFSAD30VAL</b><br></div>
+        Congalton, R. G., Yadav, K., McDonnell, K., Poehnelt, J., Stevens, B., Gumma, M. K., Teluguntla, P., Thenkabail, P.S. (2017). NASA Making Earth System Data Records for Use in Research Environments (MEaSUREs) Global Food Security-support Analysis Data (GFSAD) @ 30-m: Cropland Extent Validation (GFSAD30VAL). NASA EOSDIS Land Processes DAAC. Retrieved from
+        <a href=https://doi.org/10.5067/MEaSUREs/GFSAD/GFSAD30VAL.001>https://doi.org/10.5067/MEaSUREs/GFSAD/GFSAD30VAL.001</a>
+        </p>
+
+
+        <div class="region"><b>Work Cited:</b><br></div>
+        <p>Teluguntla, P., Thenkabail, P., Xiong, J., Gumma, M.K., Giri, C., Milesi, C., Ozdogan, M., Congalton, R., Yadav, K., 2015. CHAPTER 6 - Global Food Security Support Analysis Data at Nominal 1 km (GFSAD1km) Derived from Remote Sensing in Support of Food Security in the Twenty-First Century: Current Achievements and Future Possibilities, in: Thenkabail, P.S. (Ed.), Remote Sensing Handbook (Volume II): Land Resources Monitoring, Modeling, and Mapping with Remote Sensing. CRC Press, Boca Raton, London, New York., Pp. 131–160. ISBN 9781482217957
+            </p>
+    </div>
+
+    <style>
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+th {
+    background-color: #237c28;
+    border-color: #1c6220;
+    color: white;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    vertical-align: bottom;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+</style>
+{% endblock %}
+{% block scripts_footer %}
+{% endblock %}
+

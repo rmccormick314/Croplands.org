@@ -1,0 +1,42 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: croplands-web
+  namespace: croplands
+  annotations:
+    kubernetes.io/ingress.class: alb
+    alb.ingress.kubernetes.io/target-type: ip
+    alb.ingress.kubernetes.io/ssl-redirect: '443'
+    alb.ingress.kubernetes.io/listen-ports: '[{ "HTTP": 80, "HTTPS": 443 }]'
+spec:
+  rules:
+  - host: croplands.prod-asc.chs.usgs.gov
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: croplands-web
+            port:
+              name: http
+  - host: croplands.org
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: croplands-web
+            port:
+              name: http
+  - host: www.croplands.org
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: croplands-web
+            port:
+              name: http

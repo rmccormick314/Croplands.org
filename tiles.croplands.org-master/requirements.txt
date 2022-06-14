@@ -1,9 +1,0 @@
-Flask==1.0
-Flask-Cache~=0.13.1
-Werkzeug==0.16.1
-diskcache==4.1.0
-earthengine-api~=0.1.270
-gunicorn==19.10.0
-gevent~=21.1.2
-redis~=3.5.3
-six==1.16.0

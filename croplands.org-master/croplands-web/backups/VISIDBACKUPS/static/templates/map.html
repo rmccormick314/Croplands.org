@@ -1,0 +1,289 @@
+<style>
+    #map {
+        position: absolute;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+    /* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+.leaflet-touch .leaflet-bar {
+    border: none;
+}
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: white;
+    opacity: 1; /* Firefox */
+    text-align: left;
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: white;
+    text-align: left;
+
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+    color: white;
+    text-align: left;
+
+}
+/* Modal Content/Box */
+.modal-content {
+    margin: 10% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 2px solid #000000;
+    width: 80%;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s
+}
+
+/* The Close Button */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+/* Add Animation */
+@-webkit-keyframes animatetop {
+    from {top: -300px; opacity: 0}
+    to {top: 0; opacity: 1}
+}
+
+@keyframes animatetop {
+    from {top: -300px; opacity: 0}
+    to {top: 0; opacity: 1}
+}
+
+@media print {
+  img {
+    max-width: none !important;
+      max-height: none !important;
+  }
+    .no-print, .no-print *
+    {
+        display: none !important;
+    }
+}
+
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      #description {
+        font-family: Roboto;
+        font-size: 15px;
+        font-weight: 300;
+      }
+
+      #infowindow-content .title {
+        font-weight: bold;
+      }
+
+      #infowindow-content {
+        display: none;
+      }
+
+      #map #infowindow-content {
+        display: inline;
+      }
+
+      .pac-card {
+        margin: 10px 10px 0 0;
+        border-radius: 2px 0 0 2px;
+        box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        outline: none;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+        background-color: #fff;
+        font-family: Roboto;
+      }
+
+      #pac-container {
+        padding-bottom: 12px;
+        margin-right: 12px;
+      }
+
+      .pac-controls {
+        display: inline-block;
+        padding: 5px 11px;
+      }
+
+      .pac-controls label {
+        font-family: Roboto;
+        font-size: 13px;
+        font-weight: 300;
+      }
+
+      #pac-input {
+        background-color: #fff;
+        font-family: Roboto;
+        font-size: 15px;
+        font-weight: 300;
+        margin-left: 12px;
+        padding: 0 11px 0 13px;
+        text-overflow: ellipsis;
+        width: 400px;
+      }
+
+      #pac-input:focus {
+        border-color: #4d90fe;
+      }
+
+      #title {
+        color: #fff;
+        background-color: #4d90fe;
+        font-size: 25px;
+        font-weight: 500;
+        padding: 6px 12px;
+      }
+      #target {
+        width: 345px;
+      }
+    </style>
+
+<div class="container-fluid" style="padding-left:0px;padding-right:0px;">
+    <leaflet id="map"
+             lf-layers="layers"
+            lf-center="center">
+    </leaflet>
+    <input id="pac-input" class="controls" type="text" placeholder="Search Box">
+    <div id="map-app">
+    <div class="no-print">
+        <div id="app-controls">
+            <div class="control-top control-left">
+                <div class="control" id="map-controls" class="form form-inline">
+                    <button id="contentsBtn" type="button"
+                            class="btn btn-defaut"
+                            ng-class="{'active': $parent.tableOfContentsVisible}"
+                            ng-click="$parent.tableOfContentsVisible = !$parent.tableOfContentsVisible"
+                            data-title="Layers" bs-tooltip blur>
+                        <i class="fa fa-fw fa-database"></i>
+                    </button>
+                    <button type="button"
+                            id="zoomToWorld"
+                            class="btn btn-default"
+                            data-title="Zoom to World" bs-tooltip blur
+                            ng-click="zoomExtent($event)">
+                        <i class="fa fa-fw fa-globe"></i>
+                    </button>
+                    <button type="button"
+                            id="zoomInBtn"
+                            class="btn btn-default"
+                            ng-click="$parent.center.zoom = $parent.center.zoom + 1"
+                            data-title="Zoom In" bs-tooltip blur>
+                        <i class="fa fa-fw fa-plus"></i>
+                    </button>
+                    <button type="button"
+                            id="zoomOutBtn"
+                            class="btn btn-default"
+                            ng-click="$parent.center.zoom = $parent.center.zoom - 1"
+                            data-title="Zoom Out" bs-tooltip blur>
+                        <i class="fa fa-fw fa-minus"></i>
+                    </button>
+
+                    <button type="button"
+                            class="btn btn-default"
+                            ng-click="print($event)"
+                            data-title="Print"
+                            bs-tooltip blur>
+                        <i class="fa fa-fw fa-print"></i>
+                    </button>
+
+                    <button type="button"
+                            id="helpModalBtn"
+                            class="btn btn-default"
+                            data-title="Help" bs-tooltip blur>
+                        <i class="fa fa-fw fa-question-circle"></i>
+                    </button>
+
+                    <input type="text" id="address" placeholder="Enter a location" align="left" autocomplete="on" class="btn btn-default" value="">
+
+                    <button type="button"
+                            id="submitLoc"
+                            ng-click="$scope.searchBtn"
+                            class="btn btn-default"
+                            data-title="Search" bs-tooltip blur>
+                        <i class="fa fa-fw fa-search"></i>
+                    </button>
+                        <!-- The Modal -->
+                        <div id="helpModal" class="modal">
+
+                          <!-- Modal content -->
+                          <div class="modal-content">
+                            <span class="close">&times;</span>
+                            <h4><b>Help</b></h4>
+                              <h5><b>Data Availability</b></h5>
+                              <ul><li>Please note that this product page is only for visualization.</li>
+                              <li>Currently, 30m Cropland Extent Products are <b>unavailable</b> for download.</li>
+                              <li>All of the GFSAD products for download will be distributed through
+                                  <a target="_self" href="/downloadLPDAAC"> LPDAAC</a></li></ul>
+                              <h5><b>Operating Buttons</b></h5>
+                              <ul><li>Click the "Layers" button to turn on/off the table of contents</li>
+                              <li>Click the world or "Zoom to World" to go back to a zoom level of 2</li>
+                              <li>Use the "Plus" or "Minus" button to change zoom levels</li>
+                              <li>Click the print icon on the top left of the products page to print the current screen.</li></ul>
+                              <h5><b>Navigating the Layers</b></h5>
+                              <ul><li>Click on the text "Basemap Layers" to change the basemap to Streets or Terrain.</li>
+                              <li>Click on the other layers such as "250m Products" or "Supplemental Layers"
+                              to view additional layers. Turn on the layer by clicking the check box to the left of the
+                              layer name.</li>
+                              <li>Investigate the layers further by clicking the layer names to view the legend, attribution,
+                              and opacity.  You may change the opacity by dragging the bar to the left or right</li></ul>
+                              <h5><b>Coordinates and Sharing URL</b></h5>
+                              <ul><li>When you move around the map, the URL changes the coordinates of the new map center
+                              as well as zoom level.  You may copy this URL to go back to the same area at the same zoom level.</li></ul>
+                              <h5><b>Searching throughout Map</b></h5>
+                              <ul><li>Start to enter in the city, address, country or anything really to start the autocomplete. Once you have
+                              selected a value hit the magnifying glass next to it, and you will be taken to the CENTER of that location.
+                              Once there you can now zoom in and out and drag using the buttons at the top left. </li></ul>
+                              <h5><b>Exiting the Help Window</b></h5>
+                              <ul><li>To exit this window, click anywhere on the webpage outside of the white window</li></ul>
+                              <p>Send an email to the <a href="mailto:croplands.dev@gmail.com" target="_top">Croplands Developers</a> for additional assistance.</p>
+                          </div>
+
+                        </div>
+                   </div>
+                </div>
+
+            </div>
+            </div>
+            <div class="control-top control-right">
+                <div clas="am-fade" table-of-contents expand-product-layers="true"
+                     ng-show="tableOfContentsVisible"></div>
+            </div>
+            <div class="control-bottom control-right">
+            </div>
+            <div class="control-bottom control-left">
+            </div>
+            <div class="control-center-top">
+            </div>
+        </div>
+    </div>
+
+</div>

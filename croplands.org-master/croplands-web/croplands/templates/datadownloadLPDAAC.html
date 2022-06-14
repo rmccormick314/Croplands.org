@@ -1,0 +1,137 @@
+{% extends '_primary_layout.html' %}
+{% block title %}Data Download{% endblock %}
+
+{% block content %}
+<h1 style="font-family: Tahoma; padding-top: 50px;"><center><b>LP DAAC Data Download</b></h1></center>
+    <div class="container">
+        <div class="row">
+                <h3 style="font-family: Tahoma; padding-top: 15px;"><center>Information</center></h3>
+                    <p class="lead"> The Global Croplands project has data on NASA's Land Processes Distributed
+                        Active Archive Center (<a href="https://lpdaac.usgs.gov/">LP DAAC</a>). LP DAAC is located within
+                        USGS's Earth Resources Observation and Science (EROS) Center.  To Download Data, you will need
+                        to log-in or sign up for an account.  You can create an account <a href="https://urs.earthdata.nasa.gov/users/new">
+                            here</a>.</p>
+
+                    <h3 style="font-family: Tahoma; padding-top: 15px;"><center>Data Available for Download on LP DAAC</h3></center><br>
+                        <table style="width:100%">
+                            <tr>
+                                <th style="background-color: #64717e">Product</th>
+                                <th style="background-color: #64717e">Full Name</th>
+                                <th style="background-color: #64717e">Documentation Link</th>
+                                <th style="background-color: #64717e">Data Link</th>
+                                </tr>
+
+                              <tr>
+                                <td>GFSAD30SEACE</td>
+                                <td>30m Southeast and Northeast Asia Cropland Extent</td>
+                                <td><a href="https://lpdaac.usgs.gov/documents/168/GFSAD30SEACE_User_Guide_V1.pdf">
+                                Readme</a></td>
+                                <td><a href= "https://lpdaac.usgs.gov/products/gfsad30seacev001">
+                                Download</a></td>
+                            </tr>
+                              <tr>
+                                <td>GSFAD30NACE</td>
+                                <td>30m North America Cropland Extent</td>
+                                <td><a href="https://lpdaac.usgs.gov/documents/159/GFSAD30NACE_User_Guide_V1.pdf">
+                                Readme</a></td>
+                                <td><a href= "https://lpdaac.usgs.gov/products/gfsad30nacev001">
+                                Download</a></td>
+                            </tr>
+                              <tr>
+                                <td>GFSAD30EUCEARUMECE</td>
+                                <td>30m Europe, Central Asia, Russia, and Middle East Cropland Extent</td>
+                                <td><a href="https://lpdaac.usgs.gov/documents/156/GFSAD30EUCEARUMECE_User_Guide_V1.pdf">
+                                Readme</a></td>
+                                <td><a href= "https://lpdaac.usgs.gov/products/gfsad30eucearumecev001">
+                                Download</a></td>
+                            </tr>
+                              <tr>
+                                <td>GSFAD30AFCE</td>
+                                <td>30m Africa Cropland Extent</td>
+                                <td><a href="https://lpdaac.usgs.gov/documents/152/GFSAD30AFCE_User_Guide_V1.pdf">
+                                Readme</a></td>
+                                <td><a href= "https://lpdaac.usgs.gov/products/gfsad30afcev001 ">
+                                Download</a></td>
+                            </tr>
+                              <tr>
+                                <td>GSFAD30SACE</td>
+                                <td>30m South America Cropland Extent</td>
+                                <td><a href="https://lpdaac.usgs.gov/documents/165/GFSAD30SACE_User_Guide_V1.pdf">
+                                Readme</a></td>
+                                <td><a href= "https://lpdaac.usgs.gov/products/gfsad30sacev001">
+                                Download</a></td>
+                            </tr>
+                              <tr>
+                                <td>GSFAD30SAAFGIRCE</td>
+                                <td>30m South Asia, Afghanistan and Iran Cropland Extent</td>
+                                <td><a href="https://lpdaac.usgs.gov/documents/162/GFSAD30SAAFGIRCE_User_Guide_V1.pdf">
+                                Readme</a></td>
+                                <td><a href= "https://lpdaac.usgs.gov/products/gfsad30saafgircev001">
+                                Download</a></td>
+                            </tr>
+                              <tr>
+                                <td>GSFAD30AUNZCNMOCE</td>
+                                <td>30m Australia, New Zealand, China, and Mongolia Cropland Extent</td>
+                                <td><a href="https://lpdaac.usgs.gov/documents/147/GFSAD30AUNZCNMOCE_User_Guide_V1.pdf">
+                                Readme</a></td>
+                                <td><a href= "https://lpdaac.usgs.gov/products/gfsad30aunzcnmocev001">
+                                Download</a></td>
+                            </tr>
+                            <tr>
+                                <td>GFSADCD1KM</td>
+                                <td>GCE 1km Crop Dominance</td>
+                                <td><a href="https://lpdaac.usgs.gov/documents/172/GFSAD1K_User_Guide_V1.pdf">
+                            	Readme </td>
+                                <td><a href="https://lpdaac.usgs.gov/products/gfsad1kcdv001">
+				Download</a></td>
+                            </tr>
+                            <tr>
+                                <td>GSFADCM1KM</td>
+                                <td>GCE 1km Multi-Study Crop Mask</td>
+                                <td><a href="https://lpdaac.usgs.gov/documents/172/GFSAD1K_User_Guide_V1.pdf">
+                                Readme</a></td>
+                                <td><a href= "https://lpdaac.usgs.gov/products/gfsad1kcmv001">
+                                Download</a></td>
+                            </tr>
+
+                            </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <h3 style="font-family: Tahoma; padding-top: 10px;"><center>Croplands.org is <i>only</i> for visualization.  </h3>
+
+
+
+
+
+
+
+<style>
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+th {
+    background-color: #237c28;
+    border-color: #1c6220;
+    color: white;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: center;
+    vertical-align: bottom;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+</style>
+
+{% endblock %}

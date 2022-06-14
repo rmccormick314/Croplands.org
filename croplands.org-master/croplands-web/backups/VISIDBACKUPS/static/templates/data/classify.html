@@ -1,0 +1,93 @@
+<style>
+    .leaflet-control-zoom {
+        visibility: visible;
+    }
+
+    kbd {
+        font-size: 120%;
+        margin-right: 10px;
+        margin-top: 5px;
+        min-width: 25px;
+    }
+</style>
+
+<div class="container-fluid container-static-nav">
+    <div class="row" style="padding-top: 2%">
+        <div class="col-sm-3">
+            <div class="well well-sm">
+                <h3 style="text-align: center;margin: 10px 0;">Instructions</h3>
+
+                <p>Select the class that matches the box within the image. Unclassifiable images,
+                    such as those obscured by clouds should be rejected. You may need to pan the map
+                    for additional context.</p>
+
+                <h3 style="text-align: center;margin: 10px 0;">Definitions</h3>
+                <h4>Cropland</h4>
+
+                <p>
+                    All cultivated plants harvested for food, feed, and fiber, including plantations
+                    (e.g., orchards, vineyards, coffee, tea, rubber).
+                </p>
+                <h4>Pure</h4>
+
+                <p>
+                    Greater than 80% of the pixels in the red box are cropland.
+                </p>
+                <h4>Mixed</h4>
+
+                <p>
+                    Less than 80% and more than 20% of the pixels in the red box are cropland.
+                </p>
+
+                <h3 style="text-align: center;margin: 10px 0;">Downloads</h3>
+
+                <a class="btn btn-danger btn-block"
+                   href="http://public.croplands.org/json/classifications.json"
+                   target="_blank">Download JSON(Training)</a>
+                <a class="btn btn-danger btn-block"
+                   href="http://public.croplands.org/csv/classifications.csv"
+                   target="_blank">Download CSV(Training)</a>
+
+            </div>
+        </div>
+
+        <div class="col-sm-6">
+            <h3>This is Very High Resolution Imagery (submeter to 5 meters) data of the world.  This data has been interpreted by Bo Stevens and others.  </h3>
+            <leaflet id="map"
+                     style="height: 600px; width:100%;"
+                     lf-layers="layers"
+                     lf-center="center"
+                     paths="paths">
+            </leaflet>
+        </div>
+        <div class="col-sm-3">
+            <div class="well well-sm">
+                <h3 style="text-align: center;margin: 10px 0;">Select Class</h3>
+                <button class="btn btn-primary btn-block {{ type.buttonClass }}"
+                        style="padding: 10px 4px;"
+                        ng-click="classify(type.id)"
+                        ng-class="{'active': type.id===action}"
+                        ng-repeat="type in buttons" blur>{{ type.label }}
+                </button>
+                <button class="btn btn-default btn-block"
+                        style="padding: 10px 4px;"
+                        ng-class="{'active': 's'===action}"
+                        ng-click="skip()"
+                        blur>Skip
+                </button>
+            </div>
+            <div class="well well-sm">
+                <h3 style="text-align: center;margin: 10px 0;">Keyboard Shortcuts</h3>
+                <h5><kbd class="light">c</kbd> Pure Cropland</h5>
+                <h5><kbd class="light">e</kbd> Mixed Cropland</h5>
+                <h5><kbd class="light">d</kbd> Not Cropland</h5>
+                <h5><kbd class="light">q</kbd> Maybe Cropland</h5>
+                <h5><kbd class="light">r</kbd> Reject</h5>
+                <h5><kbd class="light">s</kbd> Skip</h5>
+                <h5><kbd class="light">f</kbd> Zoom Out</h5>
+                <h5><kbd class="light">g</kbd> Zoom In</h5>
+                <h5><kbd class="light">v</kbd> Toggle Image</h5>
+            </div>
+        </div>
+    </div>
+</div>

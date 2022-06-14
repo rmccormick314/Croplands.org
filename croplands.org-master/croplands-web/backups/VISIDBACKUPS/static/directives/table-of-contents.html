@@ -1,0 +1,122 @@
+<div class="control" id="layers">
+    <div class="panel panel-success">
+        <div class="panel-heading">
+            <i class="fa fa-close"
+               ng-click="$parent.tableOfContentsVisible = !$parent.tableOfContentsVisible"
+                    ></i>
+            <h5 class="panel-title"><i class="fa fa-fw fa-database"></i> Map Layers
+            </h5>
+        </div>
+        <div class="panel-body">
+            <h5 ng-click="expandBackgroundLayers=!expandBackgroundLayers">
+                Basemap Layers
+                <i class="fa fa-fw"
+                   ng-class="{'fa-caret-down': expandBackgroundLayers, 'fa-caret-right': !expandBackgroundLayers  }">
+                </i>
+            </h5>
+
+            <div ng-if="expandBackgroundLayers" class="padding-left">
+                <div class="radio" ng-repeat="(key, layer) in layers.baselayers">
+                    <label>
+                        <input type="radio" name="backgroundRadios"
+                               ng-checked="layer.visible"
+                               ng-click="changeBaseLayer(key)">
+                        {{ layer.name }}
+                    </label>
+                </div>
+            </div>
+            <h5 ng-click="expandProductLayers=!expandProductLayers">
+                30m Products
+                <i class="fa fa-fw"
+                   ng-class="{'fa-caret-down': expandProductLayers, 'fa-caret-right': !expandProductLayers  }">
+                </i>
+            </h5>
+
+            <div ng-if="expandProductLayers" class="padding-left">
+                <div table-of-contents-layer
+                     layer="layers.overlays.Global_30m_L1_v20170605"></div>
+                <div table-of-contents-layer
+                     layer="layers.overlays.SouthAsia_30m_IrrRain_v20170628"></div>
+                <div table-of-contents-layer
+                     layer="layers.overlays.Australia_rainfedvsirrigated_30m_color_20170803"></div>
+            </div>
+
+            <h5 ng-click="expand250mLayers=!expand250mLayers">
+                250m Products
+                <i class="fa fa-fw"
+                   ng-class="{'fa-caret-down': expand250mLayers, 'fa-caret-right': !expand250mLayers  }">
+                </i>
+            </h5>
+                <div ng-if="expand250mLayers" class="padding-left">
+                    <div table-of-contents-layer
+                     layer="layers.overlays.Africa_250m_L2_v20160601"></div>
+                    <div table-of-contents-layer
+                     layer="layers.overlays.Australia_250m_L3_v20160701"></div>
+                    <div table-of-contents-layer
+                     layer="layers.overlays.SouthAsia_250m_L4_v20151201"></div>
+                    </div>
+
+
+            <h5 ng-click="expand250mUSLayers=!expand250mUSLayers">
+                250m United States Products
+                <i class="fa fa-fw"
+                   ng-class="{'fa-caret-down': expand250mUSLayers, 'fa-caret-right': !expand250mUSLayers  }">
+                </i>
+            </h5>
+            <div ng-if="expand250mUSLayers" class="padding-left">
+                <div table-of-contents-layer
+                     layer="layers.overlays.UnitedStates_250m_L5_v20170322_2001"></div>
+                <div table-of-contents-layer
+                     layer="layers.overlays.UnitedStates_250m_L5_v20170322_2002"></div>
+                <div table-of-contents-layer
+                     layer="layers.overlays.UnitedStates_250m_L5_v20170322_2003"></div>
+                <div table-of-contents-layer
+                     layer="layers.overlays.UnitedStates_250m_L5_v20170322_2004"></div>
+                <div table-of-contents-layer
+                     layer="layers.overlays.UnitedStates_250m_L5_v20170322_2005"></div>
+                <div table-of-contents-layer
+                     layer="layers.overlays.UnitedStates_250m_L5_v20170322_2006"></div>
+                <div table-of-contents-layer
+                     layer="layers.overlays.UnitedStates_250m_L5_v20170322_2007"></div>
+                <div table-of-contents-layer
+                     layer="layers.overlays.UnitedStates_250m_L5_v20170322_2008"></div>
+                <div table-of-contents-layer
+                     layer="layers.overlays.UnitedStates_250m_L5_v20170322_2009"></div>
+                <div table-of-contents-layer
+                     layer="layers.overlays.UnitedStates_250m_L5_v20170322_2010"></div>
+                <div table-of-contents-layer
+                     layer="layers.overlays.UnitedStates_250m_L5_v20170322_2011"></div>
+                <div table-of-contents-layer
+                     layer="layers.overlays.UnitedStates_250m_L5_v20170322_2012"></div>
+                <div table-of-contents-layer
+                     layer="layers.overlays.UnitedStates_250m_L5_v20170322_2013"></div>
+            </div>
+
+            <h5 ng-click="expand1kmLayers=!expand1kmLayers">
+                1km Products
+                <i class="fa fa-fw"
+                   ng-class="{'fa-caret-down': expand1kmLayers, 'fa-caret-right': !expand1kmLayers  }">
+                </i>
+            </h5>
+                <div ng-if="expand1kmLayers" class="padding-left">
+                    <div table-of-contents-layer
+                        layer="layers.overlays.Global_1000m_L4_v20120101"></div>
+                    <div table-of-contents-layer
+                        layer="layers.overlays.Global_1000m_L3_v20150101"></div>
+    </div>
+
+            <h5 ng-click="expandAddtlLayers=!expandAddtlLayers">
+                Supplemental Layers (Other Sources)
+                <i class="fa fa-fw"
+                   ng-class="{'fa-caret-down': expandAddtlLayers, 'fa-caret-right': !expandAddtlLayers  }">
+                </i>
+            </h5>
+
+            <div ng-if="expandAddtlLayers" class="padding-left">
+                <div table-of-contents-layer
+                     layer="layers.overlays.HumanDevelopment_30m_L1_v20170612"></div>
+                <div table-of-contents-layer
+                     layer="layers.overlays.WaterOccurrence_30m_L1_v20170620"></div>
+            </div>
+</div>
+</div>

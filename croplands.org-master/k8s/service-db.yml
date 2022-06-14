@@ -1,0 +1,38 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: croplands-db
+  namespace: croplands
+spec:
+  selector:
+    app: croplands-db
+  ports:
+  - name: postgres
+    protocol: TCP
+    port: 5432
+    targetPort: 5432
+  - name: redis
+    protocol: TCP
+    port: 6379
+    targetPort: 6379
+
+---
+
+kind: Service
+apiVersion: v1
+metadata:
+  name: croplands-db-loadbalancer
+  namespace: croplands
+  annotations:
+    service.beta.kubernetes.io/aws-load-balancer-name: croplands-db
+    service.beta.kubernetes.io/aws-load-balancer-type: external
+    service.beta.kubernetes.io/aws-load-balancer-nlb-target-type: ip
+spec:
+  type: LoadBalancer
+  selector:
+    app: croplands-db
+  ports:
+  - name: postgres
+    protocol: TCP
+    port: 5432
+    targetPort: 5432
