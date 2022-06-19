@@ -1,4 +1,4 @@
-FROM usgsastro/debian:10
+FROM debian:10
 
 ENV NODE_VERSION 14.17.0
 ENV PIP_CERT /etc/ssl/certs/ca-certificates.crt

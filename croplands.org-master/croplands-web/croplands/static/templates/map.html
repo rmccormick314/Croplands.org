@@ -2,8 +2,8 @@
     #map {
         position: absolute;
         left: 0;
-        width: 100%;
-        height: 100%;
+        width: 0%;
+        height: 0%;
     }
     /* The Modal (background) */
 .modal {
@@ -166,17 +166,19 @@
         width: 345px;
       }
     </style>
+<div id="maincontent" style="height:100%;width:100%;">
+  <embed src="https://croplandsdev.users.earthengine.app/view/croplands" style="height:100%;width:100%;">
+</div>
 
-<div class="container-fluid" style="padding-left:0px;padding-right:0px;">
+<div class="container-fluid" style="padding-left:0px;padding-right:0px;display:none;">
     <leaflet id="map"
              lf-layers="layers"
             lf-center="center">
     </leaflet>
-    <input id="pac-input" class="controls" type="text" placeholder="Search Box">
     <div id="map-app">
     <div class="no-print">
         <div id="app-controls">
-            <div class="control-top control-left">
+            <div class="control-top control-left" style="display:none;">
                 <div class="control" id="map-controls" class="form form-inline">
                     <button id="contentsBtn" type="button"
                             class="btn btn-defaut"
@@ -273,7 +275,7 @@
 
             </div>
             </div>
-            <div class="control-top control-right">
+            <div class="control-top control-right" style="display:none;">
                 <div clas="am-fade" table-of-contents expand-product-layers="true"
                      ng-show="tableOfContentsVisible"></div>
             </div>

@@ -15,7 +15,24 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css"
         integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw=="
         crossorigin=""/>
+
+    <link href="/static/css/stylesheets/common.css" rel="stylesheet" type="text/css" media="screen" />
+    <link href="/static/css/stylesheets/custom.css" rel="stylesheet" type="text/css" media="screen" />
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    	<!--[if lt IE 9]>
+        <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+      <![endif]-->
+
     <!-- end css -->
+
+    <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-TKQR8KP');</script>
+  <!-- End Google Tag Manager -->
 
     <!-- Libraries to load from CDNs -->
     <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js"
@@ -51,86 +68,122 @@
     {% block scripts_head %}
     {% endblock %}
 </head>
+
+<body> <!-- opening div for body -->
+
 <link rel="icon"
       type="image/png"
       href="/static/imgs/croplands.png" />
 <body>
-<div class="navbar navbar-default navbar-fixed-top" role="navigation">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse"
-                    data-target=".navbar-collapse" blur>
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" target="_self" href="/app/map">Home</a>
+
+  <!-- BEGIN USGS Applications Header Template -->
+  <header id="navbar" class="header-nav"  role="banner">
+    <div class="tmp-container">
+        <!-- primary navigation bar -->
+    		<!-- search bar-->
+        <div class="header-search">
+         <a class="logo-header" href="https://www.usgs.gov/" title="Home">
+            <img class="img"  src="/static/css/images/logo.png"  alt="Home" />
+          </a>
+          <form action="https://www.usgs.gov/science-explorer-results" method="GET" id="search-box">
+           <div class="fa-wrapper"><label for="se_search" class="only">Search</label>
+            <input id="se_search" type="search" name="es" placeholder="Search">
+            <button class="fa fa-search" type="submit">
+              <span class="only">Search</span>
+  			 </button></div>
+          </form>
         </div>
-        <div class="collapse navbar-collapse">
-            <ul class="nav navbar-nav">
-                <li><a target="_self" href="/home">About Global Croplands</a></li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                       aria-haspopup="true" aria-expanded="false">Data <span
-                            class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <!--<li><a href="/app/data">About</a></li>-->
-                        <li><a href="/app/data/search">Reference Data (All)</a></li>
-                        <li><a target="_self" href="/downloadLPDAAC">LPDAAC Data</a></li>
-                        <li><a href="/app/data/street">Street View Application</a></li>
-                    </ul>
-                </li>
-{#                <li> <a href="/app/map">Products</a></li>#}
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                       aria-haspopup="true" aria-expanded="false">Products<span
-                            class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a target="_self" href="/app/map">Web Map (Products)</a> </li>
-                        <li class="dropdown-submenu">
-                            <a class="test" tabindex="-1" href="#">Area Maps<span class="caret"></span></a>
-                                <ul class="dropdown-menu">
-                                  <li><a tabindex="-1" href="/app/map/finalmaps/#Map1">Cropland Percent to Total Global Cropland</a></li>
-                                  <li><a tabindex="-1" href="/app/map/finalmaps/#Map2">Cropland Percent to Country Land Area</a></li>
-                                    <li><a tabindex="-1" href="/app/map/finalmaps/#Map3">Cropland per Capita</a></li>
-                                    <li><a tabindex="-1" href="/app/map/finalmaps/#Map4">Cropland by Continent</a></li>
-                                    <li><a tabindex="-1" href="/app/map/finalmaps/#Map5">Cropland Percent of Land Area by Continent</a></li>
-
-                                    </ul></li>
-
-                        <li><a target="_self" href="/app/map/finalmaps/#Mosaic">Final Map</a></li>
-                        <li><a href="/app/map/statsMap" target="_blank">Interactive Cropland Area Maps</a> </li>
-                        <li><a href="/app/map/accuracyMap" target="_blank">Interactive Accuracy Maps</a> </li>
-
-                    </ul>
-                </li>
-                <li><a target="_self" href="/downloadLPDAAC">Download Data</a></li>
-                <li><a target="_self" href="/documents" >Documents</a></li>
-                <li><a href="https://geography.wr.usgs.gov/science/croplands/pubs2017.html" target="_blank">Publications</a></li>
-{#                <li><a target="_self" href="/documents#Links">Links</a></li>#}
-                <li><a target="_self" href="/mobile">Mobile App</a></li>
-                <li><a target="_self" href="/faq">FAQs</a></li>
-                <li><a target="_self" href="/contacts">Contacts</a></li>
-                <li><a target="_self" href="/gfsadce30info">GFSAD30CE Info</a></li>
-
-                <li><a href="https://geography.wr.usgs.gov/science/croplands/index.html" target="_blank">GFSAD30 USGS Site</a></li>
+        <!-- end search bar-->
+  	</div>
+  	<!-- end header-container-->
+  </header>
+	<!-- end header-container-->
+</header>
+<!-- END USGS Applications Header Template -->
 
 
-            </ul>
-
-            {% block navbar %}
-
-            {% endblock %}
-        </div>
-        <!--/.nav-collapse -->
-    </div>
-
-</div>
 {% block body %}
 {% endblock %}
 
 {% block scripts_footer %}
+<!-- BEGIN USGS Footer Template -->
+
+<footer class="footer">
+	<div class="tmp-container">
+		<!-- .footer-wrap -->
+			<!-- .footer-doi -->
+			<div class="footer-doi">
+				<!-- footer nav links -->
+				<ul class="menu nav">
+					<li class="first leaf menu-links menu-level-1"><a href="https://www.doi.gov/privacy">DOI Privacy Policy</a></li>
+					<li class="leaf menu-links menu-level-1"><a href="https://www.usgs.gov/policies-and-notices">Legal</a></li>
+					<li class="leaf menu-links menu-level-1"><a href="https://www.usgs.gov/accessibility-and-us-geological-survey">Accessibility</a></li>
+					<li class="leaf menu-links menu-level-1"><a href="https://www.usgs.gov/sitemap">Site Map</a></li>
+					<li class="last leaf menu-links menu-level-1"><a href="https://answers.usgs.gov/">Contact USGS</a></li>
+				</ul>
+				<!--/ footer nav links -->
+			</div>
+			<!-- /.footer-doi -->
+
+			<hr>
+
+		<!-- .footer-utl-links -->
+		<div class="footer-doi">
+			<ul class="menu nav">
+				<li class="first leaf menu-links menu-level-1"><a href="https://www.doi.gov/">U.S. Department of the Interior</a></li>
+				<li class="leaf menu-links menu-level-1"><a href="https://www.doioig.gov/">DOI Inspector General</a></li>
+				<li class="leaf menu-links menu-level-1"><a href="https://www.whitehouse.gov/">White House</a></li>
+				<li class="leaf menu-links menu-level-1"><a href="https://www.whitehouse.gov/omb/management/egov/">E-gov</a></li>
+				<li class="leaf menu-links menu-level-1"><a href="https://www.doi.gov/pmb/eeo/no-fear-act">No Fear Act</a></li>
+				<li class="last leaf menu-links menu-level-1"><a href="https://www.usgs.gov/about/organization/science-support/foia">FOIA</a></li>
+			</ul>
+			</div>
+		<!-- /.footer-utl-links -->
+		<!-- .footer-social-links -->
+		<div class="footer-social-links">
+			<ul class="social">
+				<li class="follow">Follow</li>
+				<li class="twitter">
+					<a href="https://twitter.com/usgs" target="_blank">
+						<i class="fa fa-twitter-square"><span class="only">Twitter</span></i>
+					</a>
+				</li>
+				<li class="facebook">
+					<a href="https://facebook.com/usgeologicalsurvey" target="_blank">
+						<i class="fa fa-facebook-square"><span class="only">Facebook</span></i>
+					</a>
+				</li>
+				<li class="github">
+					<a href="https://github.com/usgs" target="_blank">
+						<i class="fa fa-github"><span class="only">GitHub</span></i>
+					</a>
+				</li>
+				<li class="flickr">
+					<a href="https://flickr.com/usgeologicalsurvey" target="_blank">
+						<i class="fa fa-flickr"><span class="only">Flickr</span></i>
+					</a>
+				</li>
+				<li class="youtube">
+					<a href="http://youtube.com/usgs" target="_blank">
+						<i class="fa fa-youtube-play"><span class="only">YouTube</span></i>
+					</a>
+				</li>
+				<li class="instagram">
+					<a href="https://instagram.com/usgs" target="_blank">
+						<i class="fa fa-instagram"><span class="only">Instagram</span></i>
+					</a>
+				</li>
+			</ul>
+		</div>
+		<!-- /.footer-social-links -->
+	</div>
+		<!-- /.footer-wrap -->
+</footer>
+<!-- END USGS Footer Template- -->
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TKQR8KP"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
 {% endblock %}
 
 <script>
