@@ -10,7 +10,7 @@
 		}
 	</style>
 
-	<style>#map { position: absolute; width: 99.5%; height: 99%; }
+<style>#map { position: relative; width: 99.5%; height: 99%; }
 .leaflet-touch .leaflet-bar {  border: none; }
 .leaflet-top {  top: 50px;  }
 .info { padding: 6px 8px; font: 14px/16px Arial, Helvetica, sans-serif; background: white; background: rgba(255,255,255,0.8); box-shadow: 0 0 15px rgba(0,0,0,0.2); border-radius: 5px; } .info h4 { margin-top: 5px; color: #777; }
@@ -19,11 +19,9 @@
 
 </head>
 <body>
-
+<div id="maincontent" style="height:800px;">
 <div id='map'></div>
-
 <script type="text/javascript" src="/static/templates/AreaMap.js"></script>
-
 <script type="text/javascript">
 
 	var map = L.map('map').fitWorld().setZoom(2);
@@ -262,5 +260,6 @@
 
 
 </script>
+</div>
 </body>
 </html>

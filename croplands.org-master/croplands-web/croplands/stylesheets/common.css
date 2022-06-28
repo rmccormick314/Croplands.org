@@ -11,7 +11,7 @@ footer, #navbar {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
-}	
+}
 
 footer, header, main, nav, div {
     display: block;
@@ -39,7 +39,7 @@ footer, header, main, nav, div {
 }
 
 hr {
-	width: 100%; 
+	width: 100%;
 	margin-top: 42px;
 	clear: both;
 }
@@ -149,7 +149,7 @@ footer.footer .footer-doi ul.menu li:after {
     content: "|";
     color: #ffffff;
     float: left;
-    padding-top: 5px;
+    padding-top: 0px;
     padding-left: 7px;
     font-size: 12px;
 }
